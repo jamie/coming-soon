@@ -17,13 +17,7 @@ class ComingSoon < Sinatra::Base
     load_configuration("config.yml", "APP_CONFIG")
     load_configuration("database.yml", "DB_CONFIG")
 
-    ActiveRecord::Base.establish_connection(
-      :adapter  => DB_CONFIG['adapter'],
-      :host     => DB_CONFIG['host'],
-      :username => DB_CONFIG['username'],
-      :password => DB_CONFIG['password'],
-      :database => DB_CONFIG['name']
-    )
+    ActiveRecord::Base.establish_connection(DB_CONFIG[ENV['RACK_ENV']])
   end
 
   class User < ActiveRecord::Base

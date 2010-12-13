@@ -1,5 +1,3 @@
-adapter: mysql
-host: localhost
-username: root
-name: coming_soon_development
-password:
+development:
+  adapter: sqlite3
+  database: db/development.db
